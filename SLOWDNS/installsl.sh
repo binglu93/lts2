@@ -3,21 +3,11 @@
 # Author : Julak Bantur
 # Update ©2025
 #=============================================
-red='\e[1;31m'
-green='\e[0;32m'
-yell='\e[1;33m'
-tyblue='\e[1;36m'
-NC='\e[0m'
-# --- Link Repo Anda --- #
-GACOR="https://github.com/binglu93/lts2/raw/main/"
-
-
 ns_domain_cloudflare() {
-	DOMAIN="julak.web.id"
-	DAOMIN=$(cat /etc/xray/domain)
- echo "${tyblue}Input subdomain pilihan anda ! contoh :(xnxx)"
- read -p "Subdomain :" SUB
-	SUB_DOMAIN=${SUB}."julak.web.id"
+	DOMAIN=julak.web.id
+	DOMAIN_PATH=$(cat /etc/xray/domain)
+	SUB=$(tr </dev/urandom -dc a-z0-9 | head -c7)
+	SUB_DOMAIN=${SUB}.julak.web.id
 	NS_DOMAIN=ns-${SUB_DOMAIN}
 	CF_ID=putrameratus2@gmail.com
         CF_KEY=8d5c58d345dbb3b34b8420b9b15df5f6b8292
@@ -44,7 +34,7 @@ ns_domain_cloudflare() {
 			-H "X-Auth-Email: ${CF_ID}" \
 			-H "X-Auth-Key: ${CF_KEY}" \
 			-H "Content-Type: application/json" \
-			--data '{"type":"NS","name":"'${NS_DOMAIN}'","content":"'${DAOMIN}'","proxied":false}' | jq -r .result.id
+			--data '{"type":"NS","name":"'${NS_DOMAIN}'","content":"'${DOMAIN_PATH}'","proxied":false}' | jq -r .result.id
 		)
 	fi
 
@@ -53,31 +43,25 @@ ns_domain_cloudflare() {
 		-H "X-Auth-Email: ${CF_ID}" \
 		-H "X-Auth-Key: ${CF_KEY}" \
 		-H "Content-Type: application/json" \
-		--data '{"type":"NS","name":"'${NS_DOMAIN}'","content":"'${DAOMIN}'","proxied":false}'
+		--data '{"type":"NS","name":"'${NS_DOMAIN}'","content":"'${DOMAIN_PATH}'","proxied":false}'
 	)
 	echo $NS_DOMAIN >/etc/xray/dns
 }
 
 setup_dnstt() {
 	cd
-	rm -rf *
 	mkdir -p /etc/slowdns
-	wget -O dnstt-server "${GACOR}SLOWDNS/dnstt-server" && chmod +x dnstt-server >/dev/null 2>&1
-	wget -O dnstt-client "${GACOR}SLOWDNS/dnstt-client" && chmod +x dnstt-client >/dev/null 2>&1
+	wget -O dnstt-server "https://raw.githubusercontent.com/binglu93/lts2/main/SLOWDNS/dnstt-server" >/dev/null 2>&1
+	chmod +x dnstt-server >/dev/null 2>&1
+	wget -O dnstt-client "https://raw.githubusercontent.com/binglu93/lts2/main/SLOWDNS/dnstt-client" >/dev/null 2>&1
+	chmod +x dnstt-client >/dev/null 2>&1
 	./dnstt-server -gen-key -privkey-file server.key -pubkey-file server.pub
 	chmod +x *
 	mv * /etc/slowdns
-	wget -O /etc/systemd/system/client.service "${GACOR}SLOWDNS/client" >/dev/null 2>&1
-	wget -O /etc/systemd/system/server.service "${GACOR}SLOWDNS/server" >/dev/null 2>&1
+	wget -O /etc/systemd/system/client.service "https://raw.githubusercontent.com/binglu93/lts2/main/SLOWDNS/client" >/dev/null 2>&1
+	wget -O /etc/systemd/system/server.service "https://raw.githubusercontent.com/binglu93/lts2/main/SLOWDNS/server" >/dev/null 2>&1
 	sed -i "s/xxxx/$NS_DOMAIN/g" /etc/systemd/system/client.service 
 	sed -i "s/xxxx/$NS_DOMAIN/g" /etc/systemd/system/server.service 
-
- 
-systemctl enable client
-systemctl start client
-systemctl restart client
-systemctl start server
-systemctl restart server
 }
-ns_domain_cloudflare
+#ns_domain_cloudflare
 setup_dnstt
