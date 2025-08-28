@@ -15,6 +15,8 @@ GACOR="https://github.com/binglu93/lts2/raw/main/"
 ns_domain_cloudflare() {
 	DOMAIN="julak.web.id"
 	DAOMIN=$(cat /etc/xray/domain)
+ echo "${tyblue}Input subdomain pilihan anda ! contoh :(xnxx)"
+ read -p "Subdomain :" SUB
 	SUB_DOMAIN=${SUB}."julak.web.id"
 	NS_DOMAIN=ns-${SUB_DOMAIN}
 	CF_ID=putrameratus2@gmail.com
