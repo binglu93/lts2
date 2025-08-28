@@ -71,22 +71,13 @@ setup_dnstt() {
 	wget -O /etc/systemd/system/server.service "${GACOR}SLOWDNS/server" >/dev/null 2>&1
 	sed -i "s/xxxx/$NS_DOMAIN/g" /etc/systemd/system/client.service 
 	sed -i "s/xxxx/$NS_DOMAIN/g" /etc/systemd/system/server.service 
+
+ 
+systemctl enable client
+systemctl start client
+systemctl restart client
+systemctl start server
+systemctl restart server
 }
 ns_domain_cloudflare
 setup_dnstt
-iptables -I INPUT -p udp --dport 5300 -j ACCEPT
-iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
-iptables-save >/etc/iptables/rules.v4 >/dev/null 2>&1
-iptables-save >/etc/iptables.up.rules >/dev/null 2>&1
-netfilter-persistent save >/dev/null 2>&1
-netfilter-persistent reload >/dev/null 2>&1
-systemctl enable iptables >/dev/null 2>&1
-systemctl start iptables >/dev/null 2>&1
-systemctl restart iptables >/dev/null 2>&1
-systemctl enable client >/dev/null 2>&1
-systemctl start client >/dev/null 2>&1
-systemctl restart client >/dev/null 2>&1
-systemctl start server >/dev/null 2>&1
-systemctl restart server >/dev/null 2>&1
-
-rm -f installsl.sh
