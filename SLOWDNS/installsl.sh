@@ -15,7 +15,7 @@ GACOR="https://github.com/binglu93/lts2/raw/main/"
 ns_domain_cloudflare() {
 	DOMAIN="julak.web.id"
 	DAOMIN=$(cat /etc/xray/domain)
-    echo -e "${yell}Masukkan Subdimain Sesuai keinginan anda , contoh (xnxx)${NC}"
+    echo "${tyblue}Masukkan Subdimain Sesuai keinginan anda , contoh (xnxx)${NC}"
     sleep 3
 	read -p "Input Subomain : " SUB
 	SUB_DOMAIN=${SUB}."julak.web.id"
