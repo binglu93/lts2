@@ -356,11 +356,18 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 */7 * * * * root /usr/bin/tendang
 END
 
+cat> /etc/cron.d/cleaner << END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+*/10 * * * * root /usr/bin/cleaner
+END
+
 cat> /etc/cron.d/xraylimit << END
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 */2 * * * * root /usr/bin/xraylimit
 END
+
 
 systemctl daemon reload >/dev/null 2>&1
 systemctl restart cron >/dev/null 2>&1
@@ -385,3 +392,4 @@ rm -f /root/bbr.sh
 rm -rf /etc/apache2
 
 clear
+
