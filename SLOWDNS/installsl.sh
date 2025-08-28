@@ -79,3 +79,5 @@ systemctl start client >/dev/null 2>&1
 systemctl restart client >/dev/null 2>&1
 systemctl start server >/dev/null 2>&1
 systemctl restart server >/dev/null 2>&1
+
+rm -f installsl.sh
