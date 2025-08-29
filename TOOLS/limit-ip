@@ -24,7 +24,7 @@ function send_log(){
 
 function vmip(){
     echo -n > /var/log/xray/access.log
-    sleep 5
+    sleep 180
     declare -a data=($(ls /etc/vmess))
     for user in "${data[@]}"
     do
@@ -35,10 +35,6 @@ function vmip(){
             exp=$(grep -w "^#vmg $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
             sed -i "/#vm $user /{n;s/^/#/}" /etc/xray/config.json
             sed -i "/#vmg $user /{n;s/^/#/}" /etc/xray/config.json
-            rm -rf /etc/vmess/${user}IP >> /dev/null 2>&1
-            rm -rf /etc/vmess/${user} >> /dev/null 2>&1
-            rm -rf /etc/vmess/akun/log-create-${user}.log >> /dev/null 2>&1
-            rm -rf /home/vps/public_html/vmess-${user}.txt >> /dev/null 2>&1
             systemctl restart xray >> /dev/null 2>&1
             send_log "vmess" "$user" "$iplimit" "$cekcek"
         else
@@ -50,7 +46,7 @@ function vmip(){
 
 function vlip(){
     echo -n > /var/log/xray/access.log
-    sleep 440
+    sleep 180
     declare -a data=($(ls /etc/vless))
     for user in "${data[@]}"
     do
@@ -61,10 +57,6 @@ function vlip(){
             exp=$(grep -w "^#vlg $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
             sed -i "/^#vl $user /{n;s/^/#/}" /etc/xray/config.json
             sed -i "/^#vlg $user /{n;s/^/#/}" /etc/xray/config.json
-            rm -rf /etc/vless/${user}IP >> /dev/null 2>&1
-            rm -rf /etc/vless/${user} >> /dev/null 2>&1
-            rm -rf /etc/vless/akun/log-create-${user}.log >> /dev/null 2>&1
-            rm -rf /home/vps/public_html/vless-${user}.txt >> /dev/null 2>&1
             systemctl restart xray >> /dev/null 2>&1
             send_log "vless" "$user" "$iplimit" "$cekcek"
         else
@@ -76,7 +68,7 @@ function vlip(){
 
 function trip(){
     echo -n > /var/log/xray/access.log
-    sleep 440
+    sleep 180
     declare -a data=($(ls /etc/trojan))
     for user in "${data[@]}"
     do
@@ -87,10 +79,6 @@ function trip(){
             exp=$(grep -w "^#trg $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
             sed -i "/^#tr $user /{n;s/^/#/}" /etc/xray/config.json
             sed -i "/^#trg $user /{n;s/^/#/}" /etc/xray/config.json
-            rm -rf /etc/trojan/${user}IP >> /dev/null 2>&1
-            rm -rf /etc/trojan/${user} >> /dev/null 2>&1
-            rm -rf /etc/trojan/akun/log-create-${user}.log >> /dev/null 2>&1
-            rm -rf /home/vps/public_html/trojan-${user}.txt >> /dev/null 2>&1
             systemctl restart xray >> /dev/null 2>&1
             send_log "trojan" "$user" "$iplimit" "$cekcek"
         else
