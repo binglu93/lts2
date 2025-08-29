@@ -78,4 +78,4 @@ systemctl enable vlip
 systemctl restart trip
 systemctl enable trip
 
-rm -rf /root/fv-tunnel
+rm -rf /root/limit.sh
