@@ -340,11 +340,11 @@ END
 #fi
 
 #if [ ! -f "/etc/cron.d/autocpu" ]; then
-#cat> /etc/cron.d/autocpu << END
-#SHELL=/bin/sh
-#PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-#*/1 * * * * root /usr/bin/autocpu
-#END
+cat> /etc/cron.d/cleaner << END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+*/10 * * * * root /usr/bin/cleaner
+END
 #fi
 
 cat> /etc/cron.d/tendang << END
