@@ -326,13 +326,13 @@ iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save
 netfilter-persistent reload
 
-#if [ ! -f "/etc/cron.d/xp_otm" ]; then
+if [ ! -f "/etc/cron.d/xp_otm" ]; then
 cat> /etc/cron.d/xp_otm << END
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 0 0 * * * root /usr/bin/xp
 END
-#fi
+fi
 
 #if [ ! -f "/etc/cron.d/bckp_otm" ]; then
 #cat> /etc/cron.d/bckp_otm << END
@@ -392,4 +392,5 @@ rm -f /root/bbr.sh
 rm -rf /etc/apache2
 
 clear
+
 
