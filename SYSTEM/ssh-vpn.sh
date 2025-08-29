@@ -336,7 +336,7 @@ END
 #SHELL=/bin/sh
 #PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 #0 5 * * * root /usr/bin/auto-backup
-END
+#END
 #fi
 
 #if [ ! -f "/etc/cron.d/autocpu" ]; then
