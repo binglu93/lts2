@@ -24,9 +24,32 @@ wget -q -O /usr/bin/limit-ip "https://raw.githubusercontent.com/binglu93/lts2/ma
 chmod +x /usr/bin/*
 cd /usr/bin
 sed -i 's/\r//' limit-ip
-cd
 clear
-# // SERVICE LIMIT IP VMESS
+wget -q -O /usr/bin/limit-ip-ssh "https://raw.githubusercontent.com/binglu93/lts2/main/TOOLS/limit-ip-ssh"
+chmod +x /usr/bin/*
+cd /usr/bin
+sed -i 's/\r//' limit-ip-ssh
+clear
+#SERVICE LIMIT ALL IP
+cat >/etc/systemd/system/sship.service << EOF
+[Unit]
+Description=My
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/limit-ip-ssh sship
+Restart=always
+RestartSec=3
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Install]
+WantedBy=default.target
+EOF
+systemctl daemon-reload
+systemctl restart sship
+systemctl enable sship
+#SERVICE LIMIT ALL IP
 cat >/etc/systemd/system/vmip.service << EOF
 [Unit]
 Description=My
@@ -40,8 +63,10 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 EOF
+systemctl daemon-reload
+systemctl restart vmip
+systemctl enable vmip
 
-# // SERVICE LIMIT IP VLESS
 cat >/etc/systemd/system/vlip.service << EOF
 [Unit]
 Description=My
@@ -55,8 +80,10 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 EOF
+systemctl daemon-reload
+systemctl restart vlip
+systemctl enable vlip
 
-# // SERVICE LIMIT TROJAN
 cat >/etc/systemd/system/trip.service << EOF
 [Unit]
 Description=My
@@ -71,10 +98,6 @@ Restart=always
 WantedBy=multi-user.target
 EOF
 systemctl daemon-reload
-systemctl restart vmip
-systemctl enable vmip
-systemctl restart vlip
-systemctl enable vlip
 systemctl restart trip
 systemctl enable trip
 
