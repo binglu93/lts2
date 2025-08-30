@@ -374,7 +374,7 @@ echo -e "${CYAN}│PILIH NOMOR${NC} ${MAGENTA}[12] ${YELLOW}🔍 MELIHAT STATUS 
 echo -e "${YELLOW}╰══${GREEN}==================${BLUE}══=======${PURPLE}══════════════════════${RED}╯${NC}"
 
 echo -e "${MAGENTA}╭═══════${CYAN}══════ • ${RED}AUTOSCRIPT LTS V2${BLUE} • ${GREEN}═══════════════╮${NC}"
-echo -e "${YELLOW}│PILIH NOMOR${NC} ${CYAN}  [15]     ${WH}🧬 AKSESS BOT ADMIN PRO 🧬 ${NC}   │"
+echo -e "${YELLOW}│PILIH NOMOR${NC} ${CYAN}[15]     ${WH}🧬 AKSESS BOT ADMIN PRO 🧬 ${NC}   │"
 echo -e "${BLUE}╰══${RED}==================${GREEN}══=======${CYAN}══════════════════════${MAGENTA}╯${NC}"
 echo -e "$COLOR1│                                                   $COLOR1│ $NC"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
