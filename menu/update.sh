@@ -1,6 +1,4 @@
 #!/bin/bash
-
-#!/bin/bash
 clear
 
 # =============================================
@@ -123,8 +121,8 @@ wget -q -O /usr/bin/manual-restore "https://raw.githubusercontent.com/binglu93/l
 
 wget -q -O /usr/bin/xraylimit "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/xraylimit.sh" && chmod +x /usr/bin/xraylimit
 wget -q -O /usr/bin/trialvmess "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/trialvmess.sh" && chmod +x /usr/bin/trialvmess
-wget -q -O /usr/bin/trialvless "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/trialtrojan.sh" && chmod +x /usr/bin/trialtrojan
-wget -q -O /usr/bin/trialtrojan "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/trialvless.sh" && chmod +x /usr/bin/trialvless
+wget -q -O /usr/bin/trialtrojan "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/trialtrojan.sh" && chmod +x /usr/bin/trialtrojan
+wget -q -O /usr/bin/trialvless "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/trialvless.sh" && chmod +x /usr/bin/trialvless
 wget -q -O /usr/bin/trialssh "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/trialssh.sh" && chmod +x /usr/bin/trialssh
 wget -q -O /usr/bin/trial "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/trial.sh" && chmod +x /usr/bin/trial
 wget -q -O /usr/bin/online "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/online" && chmod +x /usr/bin/online
@@ -147,8 +145,9 @@ wget -q -O /usr/bin/add-tru "https://github.com/binglu93/lts2/raw/refs/heads/mai
 wget -q -O /usr/bin/cek "https://github.com/binglu93/lts2/raw/refs/heads/main/menu/cek.sh" && chmod +x /usr/bin/cek
 wget -q -O /usr/bin/speedtest "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/speedtest_cli.py" && chmod +x /usr/bin/speedtest
 wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/xp.sh" && chmod +x /usr/bin/xp
-wget -q -O /usr/bin/cleaner "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/cleaner.ch" && chmod +x /usr/bin/cleaner
-
+wget -q -O /usr/bin/cleaner "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/cleaner.sh" && chmod +x /usr/bin/cleaner
+wget -q -O /usr/bin/killuser "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/killuser" && chmod +x /usr/bin/killuser
+wget -q -O /usr/bin/trialvms "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/trial-ws.sh" && chmod +x /usr/bin/trialvms
 
 clear
 echo -e ""
