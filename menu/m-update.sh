@@ -14,56 +14,44 @@ echo -e "$COLOR1 ${NC} ${COLBG1}                 ${WH}⇱ UPDATE ⇲            
 echo -e "$COLOR1 ${NC} ${COLBG1}             ${WH}⇱ SCRIPT TERBARU ⇲                ${NC} $COLOR1 $NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 
-
+cd /usr/bin
 #hapus menu
+rm -rf menu
+rm -rf update
 rm -rf m-tcp
 rm -rf m-theme
-rm -rf m-trojan
-rm -rf m-update
-rm -rf m-vless
 rm -rf m-vmess
-rm -rf menu
-rm -rf auto-backup
+rm -rf m-vless
+rm -rf m-trojan
+rm -rf system
+rm -rf sshws
+rm -rf running
+rm -rf cekservice
+rm -rf m-update
+rm -rf tendang
+rm -rf check-port
+rm -rf menu-backup
+rm -rf auto-backuo
 rm -rf auto-restore
 rm -rf manual-backup
 rm -rf manual-restore
-rm -rf menu-backup
-rm -rf running
-rm -rf sshws
-rm -rf system
-rm -rf tendang
-rm -rf trial
-rm -rf trialssh
-rm -rf trialtrojan
-rm -rf trialvless
-rm -rf trialvmess
-rm -rf update
-
-rm -rf cleaner
-rm -rf m-allxray
 rm -rf xraylimit
-rm -rf xp
-rm -rf autocpu
-rm -rf bantwidth
-rm -rf bbr
-rm -rf ins-xray
-rm -rf lolcat
-rm -rf set-br
-rm -rf slowdns
-rm -rf ssh-vpn
-rm -rf strt
-rm -rf udp-custom
-rm -rf vpn
-rm -rf limit
-rm -rf quota
+rm -rf trialvmess
+rm -rf trialvless
+rm -rf trialtrojan
+rm -rf trialssh
+rm -rf trial
+rm -rf online
+rm -rf trojan-online
+rm -rf ceklimit
 rm -rf trojan
 rm -rf vless
 rm -rf vmess
 rm -rf insshws
 rm -rf online
 rm -rf ceklimit
-rm -rf online-xray
 rm -rf atur-backup
+rm -rf online-xray
 rm -rf backup
 rm -rf restore
 rm -rf admin
@@ -77,6 +65,8 @@ rm -rf add-vms
 rm -rf add-vls
 rm -rf add-tru
 rm -rf cek
+rm -rf killuser
+rm -rf trialvms
 
 fun_bar() {
     CMD[0]="$1"
@@ -106,7 +96,6 @@ fun_bar() {
 }
 
 oyess() {
-
 wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/menu.sh" && chmod +x /usr/bin/menu
 wget -q -O /usr/bin/update "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/update.sh" && chmod +x /usr/bin/update
 wget -q -O /usr/bin/m-tcp "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/m-tcp.sh" && chmod +x /usr/bin/m-tcp
@@ -132,13 +121,13 @@ wget -q -O /usr/bin/manual-restore "https://raw.githubusercontent.com/binglu93/l
 
 wget -q -O /usr/bin/xraylimit "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/xraylimit.sh" && chmod +x /usr/bin/xraylimit
 wget -q -O /usr/bin/trialvmess "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/trialvmess.sh" && chmod +x /usr/bin/trialvmess
-wget -q -O /usr/bin/trialvless "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/trialvless.sh" && chmod +x /usr/bin/trialvless
-wget -q -O /usr/bin/trialtrojan "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/trialtrojan.sh" && chmod +x /usr/bin/trialtrojan
+wget -q -O /usr/bin/trialvless "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/trialtrojan.sh" && chmod +x /usr/bin/trialtrojan
+wget -q -O /usr/bin/trialtrojan "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/trialvless.sh" && chmod +x /usr/bin/trialvless
 wget -q -O /usr/bin/trialssh "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/trialssh.sh" && chmod +x /usr/bin/trialssh
 wget -q -O /usr/bin/trial "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/trial.sh" && chmod +x /usr/bin/trial
+wget -q -O /usr/bin/online "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/online" && chmod +x /usr/bin/online
 wget -q -O /usr/bin/trojan-online "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/trojan-online" && chmod +x /usr/bin/trojan-online
 wget -q -O /usr/bin/ceklimit "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/ceklimit" && chmod +x /usr/bin/ceklimit
-wget -q -O /usr/bin/online "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/online" && chmod +x /usr/bin/online
 wget -q -O /usr/bin/atur-backup "https://github.com/binglu93/lts2/raw/refs/heads/main/menu/atur-backup" && chmod +x /usr/bin/atur-backup
 wget -q -O /usr/bin/online-xray "https://github.com/binglu93/lts2/raw/refs/heads/main/menu/online-xray" && chmod +x /usr/bin/online-xray
 wget -q -O /usr/bin/backup "https://github.com/binglu93/lts2/raw/refs/heads/main/menu/backup" && chmod +x /usr/bin/backup
@@ -156,7 +145,9 @@ wget -q -O /usr/bin/add-tru "https://github.com/binglu93/lts2/raw/refs/heads/mai
 wget -q -O /usr/bin/cek "https://github.com/binglu93/lts2/raw/refs/heads/main/menu/cek.sh" && chmod +x /usr/bin/cek
 wget -q -O /usr/bin/speedtest "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/speedtest_cli.py" && chmod +x /usr/bin/speedtest
 wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/xp.sh" && chmod +x /usr/bin/xp
-wget -q -O /usr/bin/cleaner "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/cleaner.ch" && chmod +x /usr/bin/cleaner
+wget -q -O /usr/bin/cleaner "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/cleaner.sh" && chmod +x /usr/bin/cleaner
+wget -q -O /usr/bin/killuser "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/killuser" && chmod +x /usr/bin/killuser
+wget -q -O /usr/bin/trialvms "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/trial-ws.sh" && chmod +x /usr/bin/trialvms
 clear
 
 }
