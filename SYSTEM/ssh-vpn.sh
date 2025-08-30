@@ -29,7 +29,7 @@ commonname=none
 email=none
 
 # simple password minimal
-curl -sS https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/password | openssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/pam.d/common-password
+curl -sS https://raw.githubusercontent.com/binglu93/lts2/main/SYSTEM/password | openssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/pam.d/common-password
 chmod +x /etc/pam.d/common-password
 
 # go to root
@@ -141,8 +141,8 @@ install_ssl(){
 apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-curl https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/nginx.conf > /etc/nginx/nginx.conf
-curl https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/vps.conf > /etc/nginx/conf.d/vps.conf
+curl https://raw.githubusercontent.com/binglu93/lts2/main/SYSTEM/nginx.conf > /etc/nginx/nginx.conf
+curl https://raw.githubusercontent.com/binglu93/lts2/main/SYSTEM/vps.conf > /etc/nginx/conf.d/vps.conf
 sudo sed -i 's|listen = /var/run/php-fpm.sock|listen = 127.0.0.1:9000|g' /etc/php/8.3/fpm/pool.d/www.conf
 useradd -m vps;
 mkdir -p /home/vps/public_html
@@ -150,16 +150,16 @@ echo "<?php phpinfo() ?>" > /home/vps/public_html/info.php
 chown -R www-data:www-data /home/vps/public_html
 chmod -R g+rw /home/vps/public_html
 cd /home/vps/public_html
-wget -O /home/vps/public_html/index.html "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/index.html"
+wget -O /home/vps/public_html/index.html "https://raw.githubusercontent.com/binglu93/lts2m/main/SYSTEM/index.html"
 /etc/init.d/nginx restart
 
 # install badvpn
 cd
-wget -O /usr/sbin/badvpn "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/badvpn" >/dev/null 2>&1
+wget -O /usr/sbin/badvpn "https://raw.githubusercontent.com/binglu93/lts2/main/SYSTEM/badvpn" >/dev/null 2>&1
 chmod +x /usr/sbin/badvpn > /dev/null 2>&1
-wget -q -O /etc/systemd/system/badvpn1.service "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/badvpn1.service" >/dev/null 2>&1
-wget -q -O /etc/systemd/system/badvpn2.service "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/badvpn2.service" >/dev/null 2>&1
-wget -q -O /etc/systemd/system/badvpn3.service "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/badvpn3.service" >/dev/null 2>&1
+wget -q -O /etc/systemd/system/badvpn1.service "https://raw.githubusercontent.com/binglu93/lts2/main/SYSTEM/badvpn1.service" >/dev/null 2>&1
+wget -q -O /etc/systemd/system/badvpn2.service "https://raw.githubusercontent.com/binglu93/lts2/main/SYSTEM/badvpn2.service" >/dev/null 2>&1
+wget -q -O /etc/systemd/system/badvpn3.service "https://raw.githubusercontent.com/binglu93/lts2/main/SYSTEM/badvpn3.service" >/dev/null 2>&1
 systemctl disable badvpn1 
 systemctl stop badvpn1 
 systemctl enable badvpn1
@@ -178,6 +178,9 @@ systemctl start badvpn3
 cd
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 200' /etc/ssh/sshd_config
+sed -i '/Port 22/a Port 58080' /etc/ssh/sshd_config
+sed -i '/Port 22/a Port 200' /etc/ssh/sshd_config
+sed -i '/Port 22/a Port 22' /etc/ssh/sshd_config
 
 /etc/init.d/ssh restart
 
@@ -252,10 +255,10 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 /etc/init.d/stunnel4 restart
 
 #OpenVPN
-wget https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
+wget https://raw.githubusercontent.com/binglu93/lts2/main/SYSTEM/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
 
 # // install lolcat
-wget https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/lolcat.sh &&  chmod +x lolcat.sh && ./lolcat.sh
+wget https://raw.githubusercontent.com/binglu93/lts2/main/SYSTEM/lolcat.sh &&  chmod +x lolcat.sh && ./lolcat.sh
 
 # memory swap 1gb
 cd
@@ -301,10 +304,10 @@ echo "Banner /etc/issue.net" >>/etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
 
 # Ganti Banner
-wget -O /etc/issue.net "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/julak.txt"
+wget -O /etc/issue.net "https://raw.githubusercontent.com/binglu93/lts2/main/SYSTEM/julak.txt"
 
 #install bbr dan optimasi kernel
-wget https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/bbr.sh && chmod +x bbr.sh && ./bbr.sh
+wget https://raw.githubusercontent.com/binglu93/lts2k/main/SYSTEM/bbr.sh && chmod +x bbr.sh && ./bbr.sh
 
 # blokir torrent
 iptables -A FORWARD -m string --string "get_peers" --algo bm -j DROP
@@ -332,11 +335,11 @@ END
 #fi
 
 #if [ ! -f "/etc/cron.d/bckp_otm" ]; then
-#cat> /etc/cron.d/bckp_otm << END
-#SHELL=/bin/sh
-#PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-#0 5 * * * root /usr/bin/auto-backup
-#END
+cat> /etc/cron.d/bckp_otm << END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+0 5 * * * root /usr/bin/auto-backup
+END
 #fi
 
 #if [ ! -f "/etc/cron.d/autocpu" ]; then
@@ -356,7 +359,6 @@ END
 cat> /etc/cron.d/xraylimit << END
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-0
 */2 * * * * root /usr/bin/xraylimit
 END
 
