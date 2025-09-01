@@ -30,7 +30,7 @@ function con() {
 }
 
 function cekvmess(){
-  data=($(cat /etc/xray/config.json | grep '^###' | cut -d ' ' -f 2 | sort | uniq))
+  data=($(cat /etc/xray/config.json | grep '^#vm' | cut -d ' ' -f 2 | sort | uniq))
   if [[ ! -e /etc/limit/vmess ]]; then
   mkdir -p /etc/limit/vmess
   fi
@@ -58,7 +58,7 @@ function cekvmess(){
      done
 }
 function cekvless(){
-  data=($(cat /etc/xray/config.json | grep '^#&' | cut -d ' ' -f 2 | sort | uniq))
+  data=($(cat /etc/xray/config.json | grep '^#vl' | cut -d ' ' -f 2 | sort | uniq))
   if [[ ! -e /etc/limit/vless ]]; then
   mkdir -p /etc/limit/vless
   fi
@@ -117,7 +117,7 @@ function vmess(){
 while true; do
 sleep 30
 cekvmess
-data=($(cat /etc/xray/config.json | grep '^###' | cut -d ' ' -f 2 | sort | uniq))
+data=($(cat /etc/xray/config.json | grep '^#vm' | cut -d ' ' -f 2 | sort | uniq))
 for user in ${data[@]}
 do
    if [ -e /etc/vmess/${user} ]; then
@@ -126,9 +126,9 @@ do
           if [ -e /etc/limit/vmess/${user} ]; then
              pakai=$(cat /etc/limit/vmess/${user});
                if [[ ${pakai} -gt ${cekdulu} ]]; then
-                  exp=$(grep -w "^### $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
-                  sed -i "/^### $user $exp/,/^},{/d" /etc/xray/config.json
-                  sed -i "/^### $user $exp/d" /etc/vmess/.vmess.db
+                  exp=$(grep -w "^#vm $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
+                  sed -i "/^#vm $user $exp/,/^},{/d" /etc/xray/config.json
+                  sed -i "/^#vmg $user $exp/,/^},{/d" /etc/xray/config.json
                   systemctl restart xray >> /dev/null 2>&1
                   bol=$(cat /etc/limit/vmess/${user});
                   total=$(con ${bol})
@@ -153,7 +153,7 @@ function vless(){
 while true; do
 sleep 30
 cekvless
-data=($(cat /etc/xray/config.json | grep '^#&' | cut -d ' ' -f 2 | sort | uniq))
+data=($(cat /etc/xray/config.json | grep '^#vl' | cut -d ' ' -f 2 | sort | uniq))
 for user in ${data[@]}
 do
    if [ -e /etc/vless/${user} ]; then
@@ -162,9 +162,9 @@ do
           if [ -e /etc/limit/vless/${user} ]; then
              pakai=$(cat /etc/limit/vless/${user});
                if [[ ${pakai} -gt ${cekdulu} ]]; then
-                  exp=$(grep -w "^#& $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
-                  sed -i "/^#& $user $exp/,/^},{/d" /etc/xray/config.json
-                  sed -i "/^### $user $exp/d" /etc/vless/.vless.db
+                  exp=$(grep -w "^#vl $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
+                  sed -i "/^#vl $user $exp/,/^},{/d" /etc/xray/config.json
+                  sed -i "/^#vlg $user $exp/,/^},{/d" /etc/xray/config.json
                   systemctl restart xray >> /dev/null 2>&1
                   bol=$(cat /etc/limit/vless/${user});
                   total=$(con ${bol})
@@ -189,7 +189,7 @@ function trojan(){
 while true; do
 sleep 30
 cektrojan
-data=($(cat /etc/xray/config.json | grep '^#!' | cut -d ' ' -f 2 | sort | uniq))
+data=($(cat /etc/xray/config.json | grep '^#tr' | cut -d ' ' -f 2 | sort | uniq))
 for user in ${data[@]}
 do
    if [ -e /etc/trojan/${user} ]; then
@@ -198,9 +198,9 @@ do
           if [ -e /etc/limit/trojan/${user} ]; then
              pakai=$(cat /etc/limit/trojan/${user});
                if [[ ${pakai} -gt ${cekdulu} ]]; then
-                  exp=$(grep -w "^#! $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
-                  sed -i "/^#! $user $exp/,/^},{/d" /etc/xray/config.json
-                  sed -i "/^### $user $exp/d" /etc/trojan/.trojan.db
+                  exp=$(grep -w "^#tr $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
+                  sed -i "/^#tr $user $exp/,/^},{/d" /etc/xray/config.json
+                  sed -i "/^#trg $user $exp/d" /etc/trojan/.trojan.db
                   systemctl restart xray >> /dev/null 2>&1
                   bol=$(cat /etc/limit/trojan/${user});
                   total=$(con ${bol})
