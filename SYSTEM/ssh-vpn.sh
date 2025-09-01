@@ -356,11 +356,11 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 */4 * * * * root /usr/bin/tendang
 END
 
-cat> /etc/cron.d/xraylimit << END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-*/2 * * * * root /usr/bin/xraylimit
-END
+#cat> /etc/cron.d/xraylimit << END
+#SHELL=/bin/sh
+#PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+#*/2 * * * * root /usr/bin/xraylimit
+#END
 
 service cron restart >/dev/null 2>&1
 service cron reload >/dev/null 2>&1
