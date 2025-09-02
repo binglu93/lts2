@@ -25,14 +25,14 @@ function send_log(){
 function vmip(){
     echo -n > /var/log/xray/access.log
     sleep 5
-    declare -a data=($(ls /etc/julak/limit/vmess/ip))
+    declare -a data=($(ls /etc/vmess))
     for user in "${data[@]}"
     do
-        iplimit=$(cat /etc/julak/limit/vmess/ip/$user)
+        iplimit=$(cat /etc/vmess/${user}IP)
         ehh=$(cat /var/log/xray/access.log | grep "$user" | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq)
         cekcek=$(echo -e "$ehh" | wc -l)
         if [[ $cekcek -gt $iplimit ]]; then
-            exp=$(grep -w "^#vm $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
+            exp=$(grep -w "^#vmg $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
             sed -i "/#vm $user /{n;s/^/#/}" /etc/xray/config.json
             sed -i "/#vmg $user /{n;s/^/#/}" /etc/xray/config.json
             systemctl restart xray >> /dev/null 2>&1
@@ -47,14 +47,14 @@ function vmip(){
 function vlip(){
     echo -n > /var/log/xray/access.log
     sleep 440
-    declare -a data=($(ls /etc/julak/limit/vless/ip))
+    declare -a data=($(ls /etc/vless))
     for user in "${data[@]}"
     do
-        iplimit=$(cat /etc/julak/limit/vless/ip/$user)
+        iplimit=$(cat /etc/vless/${user}IP)
         ehh=$(cat /var/log/xray/access.log | grep "$user" | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq)
         cekcek=$(echo -e "$ehh" | wc -l)
         if [[ $cekcek -gt $iplimit ]]; then
-            exp=$(grep -w "^#vl $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
+            exp=$(grep -w "^#vlg $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
             sed -i "/^#vl $user /{n;s/^/#/}" /etc/xray/config.json
             sed -i "/^#vlg $user /{n;s/^/#/}" /etc/xray/config.json
             systemctl restart xray >> /dev/null 2>&1
@@ -69,14 +69,14 @@ function vlip(){
 function trip(){
     echo -n > /var/log/xray/access.log
     sleep 440
-    declare -a data=($(ls /etc/julak/limit/trojan/ip))
+    declare -a data=($(ls /etc/trojan))
     for user in "${data[@]}"
     do
-        iplimit=$(cat /etc/julak/limit/trojan/ip/$user)
+        iplimit=$(cat /etc/trojan/${user}IP)
         ehh=$(cat /var/log/xray/access.log | grep "$user" | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq)
         cekcek=$(echo -e "$ehh" | wc -l)
         if [[ $cekcek -gt $iplimit ]]; then
-            exp=$(grep -w "^#tr $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
+            exp=$(grep -w "^#trg $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
             sed -i "/^#tr $user /{n;s/^/#/}" /etc/xray/config.json
             sed -i "/^#trg $user /{n;s/^/#/}" /etc/xray/config.json
             systemctl restart xray >> /dev/null 2>&1
