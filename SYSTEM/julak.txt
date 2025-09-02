@@ -16,4 +16,3 @@ happy conneting
     <span style="color: #B8312F;">Telp/WhatsApp</span>:
     <span style="color: #EFEFEF;">085166600428</span>
 </p>
-END
