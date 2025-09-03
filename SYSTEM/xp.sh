@@ -16,10 +16,10 @@ sed -i "/^### $user $exp $Pass/d" /etc/xray/ssh
 if getent passwd $user > /dev/null 2>&1; then
         userdel $user > /dev/null 2>&1
 fi
-rm /home/vps/public_html/ssh-$user.txt >/dev/null 2>&1
-rm /etc/xray/sshx/${user}IP >/dev/null 2>&1
-rm /etc/xray/sshx/${user}login >/dev/null 2>&1
-rm /etc/xray/sshx/akun/log-create-${user}.log >/dev/null 2>&1
+rm -rf /home/vps/public_html/ssh-$user.txt >/dev/null 2>&1
+rm -rf /etc/xray/sshx/${user}IP >/dev/null 2>&1
+rm -rf /etc/xray/sshx/${user}login >/dev/null 2>&1
+rm -rf /etc/xray/sshx/akun/log-create-${user}.log >/dev/null 2>&1
 fi
 done
 
@@ -42,10 +42,10 @@ echo "### $user $exp $uuid" >> /etc/vmess/akundelete
 sed -i "/^#vmg $user $exp/,/^},{/d" /etc/xray/config.json
 sed -i "/^#vm $user $exp/,/^},{/d" /etc/xray/config.json
 rm -f /etc/xray/$user-tls.json /etc/xray/$user-none.json
-rm /home/vps/public_html/vmess-$user.txt >/dev/null 2>&1
-rm /etc/vmess/${user}IP >/dev/null 2>&1
-rm /etc/vmess/${user}login >/dev/null 2>&1
-rm /etc/vmess/akun/log-create-${user}.log >/dev/null 2>&1
+rm -rf /home/vps/public_html/vmess-$user.txt >/dev/null 2>&1
+rm -rf /etc/vmess/${user}IP >/dev/null 2>&1
+rm -rf /etc/vmess/${user}login >/dev/null 2>&1
+rm -rf /etc/vmess/akun/log-create-${user}.log >/dev/null 2>&1
 fi
 done
 
@@ -67,10 +67,10 @@ clear
 echo "### $user $exp $uuid" >> /etc/vless/akundelete
 sed -i "/^#vlg $user $exp/,/^},{/d" /etc/xray/config.json
 sed -i "/^#vl $user $exp/,/^},{/d" /etc/xray/config.json
-rm /home/vps/public_html/vless-$user.txt >/dev/null 2>&1
-rm /etc/vless/${user}IP >/dev/null 2>&1
-rm /etc/vless/${user}login >/dev/null 2>&1
-rm /etc/vless/akun/log-create-${user}.log >/dev/null 2>&1
+rm -rf /home/vps/public_html/vless-$user.txt >/dev/null 2>&1
+rm -rf /etc/vless/${user}IP >/dev/null 2>&1
+rm -rf /etc/vless/${user}login >/dev/null 2>&1
+rm -rf /etc/vless/akun/log-create-${user}.log >/dev/null 2>&1
 fi
 done
 
@@ -92,10 +92,10 @@ clear
 echo "### $user $exp $uuid" >> /etc/trojan/akundelete
 sed -i "/^#tr $user $exp/,/^},{/d" /etc/xray/config.json
 sed -i "/^#trg $user $exp/,/^},{/d" /etc/xray/config.json
-rm /home/vps/public_html/trojan-$user.txt >/dev/null 2>&1
-rm /etc/trojan/${user}IP >/dev/null 2>&1
-rm /etc/trojan/${user}login >/dev/null 2>&1
-rm /etc/trojan/akun/log-create-${user}.log >/dev/null 2>&1
+rm -rf /home/vps/public_html/trojan-$user.txt >/dev/null 2>&1
+rm -rf /etc/trojan/${user}IP >/dev/null 2>&1
+rm -rf /etc/trojan/${user}login >/dev/null 2>&1
+rm -rf /etc/trojan/akun/log-create-${user}.log >/dev/null 2>&1
 fi
 done
 systemctl restart xray
