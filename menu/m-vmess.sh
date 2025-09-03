@@ -800,7 +800,7 @@ echo -e "$COLOR1 ${NC} ${WH}Expired Until     ${COLOR1}: ${WH}$timer Minutes" | 
 echo -e "$COLOR1 ◇━━━━━━━━━━━━━━━━━◇ ${NC}" | tee -a /etc/vmess/akun/log-create-${user}.log
 echo -e "$COLOR1 ${NC} ${WH}    • ${author} •     " | tee -a /etc/vmess/akun/log-create-${user}.log
 echo -e "$COLOR1 ◇━━━━━━━━━━━━━━━━━◇ ${NC}" | tee -a /etc/vmess/akun/log-create-${user}.log
-echo "" | tee -a /etc/vmess/akun/log-create-${user}.log
+echo "killusr vm ${user}" | at now + $timer minutes
 systemctl restart xray > /dev/null 2>&1
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
@@ -1112,12 +1112,6 @@ function cek-vmess() {
     COLOR_YELLOW="\e[33m"
     COLOR_CYAN="\e[36m"
     COLOR_WHITE="\e[37m"
-
-    # Restart Xray jika log kurang dari 5
-    xrayy=$(cat /var/log/xray/access.log | wc -l)
-    [[ $xrayy -le 5 ]] && systemctl restart xray
-
-    xraylimit
 
     # Mendapatkan daftar semua pengguna vmess
     vm=($(cat /etc/xray/config.json | grep "^#vmg" | awk '{print $2}' | sort -u))
