@@ -24,7 +24,7 @@ function send_log(){
 
 function vmip(){
     echo -n > /var/log/xray/access.log
-    sleep 5
+    sleep 440
     declare -a data=($(ls /etc/vmess))
     for user in "${data[@]}"
     do
