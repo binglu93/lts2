@@ -350,10 +350,10 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 END
 #fi
 
-cat> /etc/cron.d/tendang << END
+cat> /etc/cron.d/limitssh-ip << END
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-*/4 * * * * root /usr/bin/tendang
+*/4 * * * * root /usr/bin/limitssh-ip
 END
 
 #cat> /etc/cron.d/xraylimit << END
