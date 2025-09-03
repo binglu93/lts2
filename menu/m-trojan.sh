@@ -365,11 +365,6 @@ trojanlink1="trojan://${uuid}@${domain}:443?mode=gun&security=tls&type=grpc&serv
 trojanlink="trojan://${uuid}@${domain}:443?path=%2Ftrojan-ws&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
 trojan1="trojan://${uuid}@${domain}:443?mode=gun%26security=tls%26type=grpc%26serviceName=trojan-grpc%26sni=${domain}#${user}"
 trojan2="trojan://${uuid}@${domain}:443?path=%2Ftrojan-ws%26security=tls%26host=${domain}%26type=ws%26sni=${domain}#${user}"
-cat> /etc/cron.d/trialtrojan${user} << END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-*/$timer * * * * root /usr/bin/trial trojan $user $uuid $exp
-END
 cat > /home/vps/public_html/trojan-$user.txt <<-END
 _______________________________
 Format Trojan WS (CDN)
@@ -472,7 +467,7 @@ echo -e "$COLOR1 ${NC} ${WH}Expired Until   ${COLOR1}: ${WH}$timer Minutes" | te
 echo -e "$COLOR1 ◇━━━━━━━━━━━━━━━━━◇ ${NC}" | tee -a /etc/trojan/akun/log-create-${user}.log
 echo -e "$COLOR1 ${NC} ${WH}  • ${author} •     " | tee -a /etc/trojan/akun/log-create-${user}.log
 echo -e "$COLOR1 ◇━━━━━━━━━━━━━━━━━◇ ${NC}" | tee -a /etc/trojan/akun/log-create-${user}.log
-echo "" | tee -a /etc/trojan/akun/log-create-${user}.log
+echo "killusr tr ${user}" | at now + $timer minutes
 systemctl restart xray > /dev/null 2>&1
 read -n 1 -s -r -p "Press any key to back"
 m-trojan
@@ -770,12 +765,6 @@ function cek-tr() {
     COLOR_YELLOW="\e[33m"
     COLOR_CYAN="\e[36m"
     COLOR_WHITE="\e[37m"
-
-    # Restart Xray jika log kurang dari 5
-    xrayy=$(cat /var/log/xray/access.log | wc -l)
-    [[ $xrayy -le 5 ]] && systemctl restart xray
-
-    xraylimit
 
     # Mendapatkan daftar semua pengguna trojan
     vm=($(cat /etc/xray/config.json | grep "^#trg" | awk '{print $2}' | sort -u))
