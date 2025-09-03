@@ -1,4 +1,3 @@
-
 #!/bin/bash
 clear
 
@@ -924,7 +923,7 @@ sed -i "/^### $Pengguna/d" /etc/xray/ssh
 read -n 1 -s -r -p "Press any key to back on menu"
 sshws
 }
-function cek-ssh(){
+function ceksh(){
 
 if [ -e "/var/log/auth.log" ]; then
         LOG="/var/log/auth.log";
@@ -1279,7 +1278,7 @@ case $opt in
 01 | 1) clear ; usernew  ;;
 02 | 2) clear ; renew  ;;
 03 | 3) clear ; hapus  ;;
-04 | 4) clear ; cek  ;;
+04 | 4) clear ; cekssh  ;;
 05 | 5) clear ; cekconfig  ;;
 06 | 6) clear ; limitssh  ;;
 07 | 7) clear ; listssh ;;
