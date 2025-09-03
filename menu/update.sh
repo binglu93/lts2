@@ -150,6 +150,7 @@ wget -q -O /usr/bin/speedtest "https://raw.githubusercontent.com/binglu93/lts2/r
 wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/xp.sh" && chmod +x /usr/bin/xp
 wget -q -O /usr/bin/cleaner "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/cleaner.sh" && chmod +x /usr/bin/cleaner
 wget -q -O /usr/bin/killuser "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/killuser" && chmod +x /usr/bin/killuser
+wget -q -O /usr/bin/limitssh-ip "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/limitssh-ip" && chmod +x /usr/bin/limitssh-ip
 
 clear
 echo -e ""
