@@ -112,7 +112,7 @@ wget -q -O /usr/bin/system "https://raw.githubusercontent.com/binglu93/lts2/refs
 wget -q -O /usr/bin/sshws "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/sshws.sh" && chmod +x /usr/bin/sshws
 wget -q -O /usr/bin/running "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/running.sh" && chmod +x /usr/bin/running
 wget -q -O /usr/bin/cekservice "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/cekservice.sh" && chmod +x /usr/bin/cekservice
-wget -q -O /usr/bin/m-update "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/m-update.sh" && chmod +x /usr/bin/m-update
+wget -q -O /usr/bin/m-update "https://raw.githubusercontent.com/rajaganjil93/up/refs/heads/main/lts2/update.sh" && chmod +x /usr/bin/m-update
 wget -q -O /usr/bin/tendang "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/tendang.sh" && chmod +x /usr/bin/tendang
 wget -q -O /usr/bin/check-port "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/check-port.sh" && chmod +x /usr/bin/check-port
 
@@ -151,7 +151,6 @@ wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/binglu93/lts2/refs/hea
 wget -q -O /usr/bin/cleaner "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/cleaner.sh" && chmod +x /usr/bin/cleaner
 wget -q -O /usr/bin/killuser "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/killuser" && chmod +x /usr/bin/killuser
 wget -q -O /usr/bin/limitssh-ip "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/limitssh-ip" && chmod +x /usr/bin/limitssh-ip
-wget -q -O /usr/bin/xraylimit.sh "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/xraylimit.sh" && chmod +x /usr/bin/xraylimit
 
 clear
 echo -e ""
