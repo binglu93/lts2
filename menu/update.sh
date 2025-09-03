@@ -1,4 +1,7 @@
 #!/bin/bash
+# Author : Julak Bantur
+# Last Update ©2025
+# ------------------ #
 clear
 
 # =============================================
@@ -142,12 +145,11 @@ wget -q -O /usr/bin/update-ssh-usage "https://github.com/binglu93/lts2/raw/refs/
 wget -q -O /usr/bin/add-vms "https://github.com/binglu93/lts2/raw/refs/heads/main/menu/add-vms.sh" && chmod +x /usr/bin/add-vms
 wget -q -O /usr/bin/add-vls "https://github.com/binglu93/lts2/raw/refs/heads/main/menu/add-vls.sh" && chmod +x /usr/bin/add-vls
 wget -q -O /usr/bin/add-tru "https://github.com/binglu93/lts2/raw/refs/heads/main/menu/add-tru.sh" && chmod +x /usr/bin/add-tru
-wget -q -O /usr/bin/cek "https://github.com/binglu93/lts2/raw/refs/heads/main/menu/cek.sh" && chmod +x /usr/bin/cek
+wget -q -O /usr/bin/cekssh "https://github.com/binglu93/lts2/raw/refs/heads/main/menu/cekssh.sh" && chmod +x /usr/bin/cekssh
 wget -q -O /usr/bin/speedtest "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/speedtest_cli.py" && chmod +x /usr/bin/speedtest
 wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/xp.sh" && chmod +x /usr/bin/xp
 wget -q -O /usr/bin/cleaner "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/cleaner.sh" && chmod +x /usr/bin/cleaner
 wget -q -O /usr/bin/killuser "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/killuser" && chmod +x /usr/bin/killuser
-wget -q -O /usr/bin/trialvms "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/trial-ws.sh" && chmod +x /usr/bin/trialvms
 
 clear
 echo -e ""
