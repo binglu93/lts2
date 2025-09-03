@@ -401,11 +401,6 @@ vless1="vless://${uuid}@${domain}:443?path=/vless%26security=tls%26encryption=no
 vless2="vless://${uuid}@${domain}:80?path=/vless%26security=none%26encryption=none%26host=${domain}%26type=ws#${user}"
 vless3="vless://${uuid}@${domain}:443?mode=gun%26security=tls%26encryption=none%26type=grpc%26serviceName=vless-grpc%26sni=${domain}#${user}"
 clear
-cat> /etc/cron.d/trialvless${user} << END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-*/$timer * * * * root /usr/bin/trial vless $user $uuid $exp
-END
 cat > /home/vps/public_html/vless-$user.txt <<-END
 _______________________________
 Format Vless WS (CDN)
@@ -543,7 +538,7 @@ echo -e "$COLOR1 ${NC} ${WH}Expired Until   ${COLOR1}: ${WH}$timer Minutes" | te
 echo -e "$COLOR1 ◇━━━━━━━━━━━━━━━━━◇ ${NC}" | tee -a /etc/vless/akun/log-create-${user}.log
 echo -e "$COLOR1 ${NC} ${WH}    • ${author} •    " | tee -a /etc/vless/akun/log-create-${user}.log
 echo -e "$COLOR1 ◇━━━━━━━━━━━━━━━━━◇ ${NC}" | tee -a /etc/vless/akun/log-create-${user}.log
-echo "" | tee -a /etc/vless/akun/log-create-${user}.log
+echo "killusr vl ${user}" | at now + $timer minutes
 systemctl restart xray > /dev/null 2>&1
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
@@ -856,12 +851,6 @@ function cek-vless() {
     COLOR_YELLOW="\e[33m"
     COLOR_CYAN="\e[36m"
     COLOR_WHITE="\e[37m"
-
-    # Restart Xray jika log kurang dari 5
-    xrayy=$(cat /var/log/xray/access.log | wc -l)
-    [[ $xrayy -le 5 ]] && systemctl restart xray
-
-    xraylimit
 
     # Mendapatkan daftar semua pengguna vless
     vm=($(cat /etc/xray/config.json | grep "^#vlg" | awk '{print $2}' | sort -u))
