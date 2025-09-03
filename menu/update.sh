@@ -151,6 +151,7 @@ wget -q -O /usr/bin/xp "https://raw.githubusercontent.com/binglu93/lts2/refs/hea
 wget -q -O /usr/bin/cleaner "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/SYSTEM/cleaner.sh" && chmod +x /usr/bin/cleaner
 wget -q -O /usr/bin/killuser "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/killuser" && chmod +x /usr/bin/killuser
 wget -q -O /usr/bin/limitssh-ip "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/limitssh-ip" && chmod +x /usr/bin/limitssh-ip
+wget -q -O /usr/bin/xraylimit.sh "https://raw.githubusercontent.com/binglu93/lts2/refs/heads/main/menu/xraylimit.sh" && chmod +x /usr/bin/xraylimit
 
 clear
 echo -e ""
