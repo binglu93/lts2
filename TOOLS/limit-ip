@@ -25,10 +25,10 @@ function send_log(){
 function vmip(){
     echo -n > /var/log/xray/access.log
     sleep 5
-    declare -a data=($(ls /etc/cbt/limit/vmess/ip))
+    declare -a data=($(ls /etc/julak/limit/vmess/ip))
     for user in "${data[@]}"
     do
-        iplimit=$(cat /etc/cbt/limit/vmess/ip/$user)
+        iplimit=$(cat /etc/julak/limit/vmess/ip/$user)
         ehh=$(cat /var/log/xray/access.log | grep "$user" | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq)
         cekcek=$(echo -e "$ehh" | wc -l)
         if [[ $cekcek -gt $iplimit ]]; then
@@ -48,10 +48,10 @@ function vmip(){
 function vlip(){
     echo -n > /var/log/xray/access.log
     sleep 440
-    declare -a data=($(ls /etc/cbt/limit/vless/ip))
+    declare -a data=($(ls /etc/julak/limit/vless/ip))
     for user in "${data[@]}"
     do
-        iplimit=$(cat /etc/cbt/limit/vless/ip/$user)
+        iplimit=$(cat /etc/julak/limit/vless/ip/$user)
         ehh=$(cat /var/log/xray/access.log | grep "$user" | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq)
         cekcek=$(echo -e "$ehh" | wc -l)
         if [[ $cekcek -gt $iplimit ]]; then
@@ -71,10 +71,10 @@ function vlip(){
 function trip(){
     echo -n > /var/log/xray/access.log
     sleep 440
-    declare -a data=($(ls /etc/cbt/limit/trojan/ip))
+    declare -a data=($(ls /etc/julak/limit/trojan/ip))
     for user in "${data[@]}"
     do
-        iplimit=$(cat /etc/cbt/limit/trojan/ip/$user)
+        iplimit=$(cat /etc/julak/limit/trojan/ip/$user)
         ehh=$(cat /var/log/xray/access.log | grep "$user" | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq)
         cekcek=$(echo -e "$ehh" | wc -l)
         if [[ $cekcek -gt $iplimit ]]; then
