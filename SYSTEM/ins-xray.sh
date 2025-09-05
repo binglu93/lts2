@@ -1,6 +1,4 @@
 #!/bin/bash
-# Instalerr Xray By Julak
-# Last Update ©2025
 # ==========================================
 # Color
 RED='\033[0;31m'
@@ -12,6 +10,7 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 LIGHT='\033[0;37m'
 # ==========================================
+# Getting
 
 echo -e "
 "
@@ -92,9 +91,6 @@ echo -n '#!/bin/bash
 chmod +x /usr/local/bin/ssl_renew.sh
 if ! grep -q 'ssl_renew.sh' /var/spool/cron/crontabs/root;then (crontab -l;echo "15 03 */3 * * /usr/local/bin/ssl_renew.sh") | crontab;fi
 
-mkdir -p /home/vps/public_html
-
-# set uuid
 mkdir -p /home/vps/public_html
 
 # set uuid
@@ -398,7 +394,7 @@ WantedBy=multi-user.target
 EOF
 cat > /etc/systemd/system/runn.service <<EOF
 [Unit]
-Description=julak
+Description=hokage
 After=network.target
 
 [Service]
